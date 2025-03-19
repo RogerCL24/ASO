@@ -32,7 +32,7 @@ for user in $(cut -d: -f1 /etc/passwd); do
     home=$(grep "^$user:" /etc/passwd | cut -d: -f6)
 
     if [ -d "$home" ]; then
-        num_fich=$(find "$home" -type f -user "$user" | wc -l)
+        num_fich=$(find "$home" -type f -user "$user" 2>/dev/null | wc -l)
     else
         num_fich=0
     fi
